@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block title %}
+Hyperlink Game
+{% endblock %}
+
+{% block body %}
+<div class="px-4 py-5 my-5 text-center">
+    <img class="d-block mx-auto mb-4" src="{{ url_for('static', filename='img/logo.svg') }}" alt="" width="72"
+         height="72">
+    <h1 class="display-5 fw-bold">Hyperlink Game</h1>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">Образовательная веб-игра, основанная на пересекающихся благодаря гиперссылкам статьях
+            Википедии.</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <a href="/start" type="button" class="btn btn-primary btn-lg px-4 gap-3">Начать игру</a>
+            <a href="/info" type="button" class="btn btn-outline-secondary btn-lg px-4">Что?</a>
+        </div>
+    </div>
+    <h2>Таблица лидеров</h2>
+    {% for leader in leader_data %}
+    <div class="h5 p-2 m-0 even ng-star-inserted">
+        <span class="font-weight-light text-muted">#{{leader[0]}}.</span>
+        <strong><a class="leader_name_link" href="profile/{{leader[3]}}">{{leader[1]}}</a></strong><span class="font-weight-light text-muted">({{leader[2]}}<span class="small">pts</span>)</span>
+    {% endfor %}
+        </div>
+    </div>
+{% endblock %}

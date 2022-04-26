@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/wiki.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/wiki2.css') }}">
+{% endblock %}
+
+{% block title %}
+Hyperlink Game
+{% endblock %}
+
+
+{% block body %}
+{% if won and pts > 0 %}
+<div class="col-lg-8 mx-auto p-3 py-md-5">
+  <main>
+    <h1>Победа !</h1>
+    <p class="fs-5 col-md-8">Вы побеждаете и получаете {{pts}} очков.</p>
+    <div class="mb-5">
+      <a href="/start" class="btn btn-primary btn-lg px-4">Играть еще раз</a>
+        <a href="/profile" class="btn btn-primary btn-lg px-4">Профиль</a>
+    </div>
+  </main>
+</div>
+{% endif %}
+{% if won and pts <= 0 %}
+<div class="col-lg-8 mx-auto p-3 py-md-5">
+  <main>
+    <h1>Почти победа !</h1>
+    <p class="fs-5 col-md-8">Вы побеждаете, но не получаете очков, так как использовали слишком большое количество переходов.</p>
+    <div class="mb-5">
+      <a href="/start" class="btn btn-primary btn-lg px-4">Играть еще раз</a>
+        <a href="/profile" class="btn btn-primary btn-lg px-4">Профиль</a>
+    </div>
+  </main>
+</div>
+{% endif %}
+<div class="wikistyle">
+{{pagedata | safe}}
+    </div>
+<div id="mw-panel" class="margin-header">
+
+<nav id="p-navigation" class="mw-portlet mw-portlet-navigation vector-menu vector-menu-portal portal" aria-labelledby="p-navigation-label" role="navigation">
+	<label id="p-navigation-label" aria-label="" class="vector-menu-heading">
+		<span class="vector-menu-heading-label">Навигация</span>
+	</label>
+	<div class="vector-menu-content">
+        <i>{{session['start']}}→{{session['goal']}}</i>
+        <b>Переходов: {{length}}</b>
+        {% for item in order%}
+		<ul><li>{{item}}</li></ul>
+        {% endfor %}
+	</div>
+</nav>
+</div>
+{% endblock %}

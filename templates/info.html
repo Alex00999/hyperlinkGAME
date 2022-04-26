@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block title %}
+Hyperlink Game
+{% endblock %}
+
+{% block body %}
+<div class="offset-md-1 col-md-9 p-4 my-4 lead">
+      <h1 id="exploring-wikipedia-gamified">Изучение Википедии в игровой форме.</h1>
+
+<p>
+    Игра представляет игрокам задачу: дается начальная статья и целевая статья, которые должны быть соединены с помощью гиперссылок находящихся на странице.
+</p>
+    <p>Игра требует от игрока использовать наименьшее количество кликов.</p>
+<p>
+В игре существует бесконечное пространство возможных игровых путей, проходящих через темы, охватывающие всю Википедию, и выигрышные соединения могут варьироваться от умных, до удивительных и забавных.
+</p>
+{% endblock %}

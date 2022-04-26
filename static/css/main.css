@@ -1,0 +1,43 @@
+body{
+  min-height: 100vh;
+  margin: 0;
+
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding-top: 3rem;
+}
+
+header{
+  min-height:50px;
+}
+
+.centred-button{
+    margin: -20px -65px;
+    position:relative;
+    top:50%;
+    left:50%;
+}
+
+footer{
+  min-height:50px;
+  background:PapayaWhip;
+}
+
+.margin-header{
+  margin-top: 75px;
+}
+
+.leader_name_link{
+  text-decoration: none;
+  color: black;
+}
+
+.leader_name_link:hover{
+  text-decoration: none;
+}
+
+h2{
+ margin-top: 50px;
+}
+
+

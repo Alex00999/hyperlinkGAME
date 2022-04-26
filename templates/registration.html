@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock %}
+
+{% block title %}
+Регистрация
+{% endblock %}
+{{ super() }}
+{% block body %}
+<main class="form-signin text-center">
+  {% for cat, msg in get_flashed_messages(True) %}
+  <div class="flash {{cat}}">{{msg}}</div>
+  {% endfor %}
+  <form action="/registration" method="post">
+        {{ form.hidden_tag() }}
+    <h1 class="h3 mb-3 fw-normal">Регистрация</h1>
+    <div class="form-floating">
+      {{ form.name(type="name", value="", class="form-control", id="floatingInput", placeholder="Name") }}
+      <label for="floatingInput">{{ form.name.label() }}</label>
+    </div>
+    <div class="form-floating">
+      {{ form.email(type="email", value="", class="form-control", id="floatingInput", placeholder="Email") }}
+      <label for="floatingInput">{{ form.email.label() }}</label>
+    </div>
+    <div class="form-floating">
+      {{ form.psw(type="password", value="", class="form-control", id="floatingPassword", placeholder="Password") }}
+      <label for="floatingPassword">{{ form.psw.label() }}</label>
+    </div>
+    <div class="form-floating">
+      {{ form.psw2(type="password", value="", class="form-control", id="floatingPassword", placeholder="Password") }}
+      <label for="floatingPassword">{{ form.psw2.label() }}</label>
+    </div>
+    <div class=" mb-4">
+    </div>
+    {{ form.submit(class="w-100 btn btn-lg btn-primary", type="submit") }}
+  </form>
+</main>
+{% endblock %}

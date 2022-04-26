@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block title %}
+Hyperlink Game
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+            <h2>Стартовая страница:</h2>
+            <h2>{{articles[0].replace('_',' ')}}</h2>
+            <p>{{summary[0]}}</p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <h2>Правила:</h2>
+            <p>Вам необходимо дойти со стартовой страницы до заданной используя гиперссылки на странице. За это вы
+                получите определенное количество очков. Старайтесь совершать как можно меньше переходов по страницам.
+            </p>
+            <p>Запрещается: использовать адресную строку, поиск по странице и переходить по внешним ссылкам.
+            </p>
+            <p><a class="btn btn-primary btn-lg px-4 gap-3 centred-button" href="/starting/{{link}}">Играть</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <h2>Целевая страница:</h2>
+            <h2>{{articles[1].replace('_',' ')}}</h2>
+            <p>{{summary[1]}}</p>
+        </div><!-- /.col-lg-4 -->
+    </div>
+</div>
+{% endblock %}
